@@ -18,4 +18,9 @@ public class BuildTypeAwareModule {
     public static StethoTool providesStetho(Application application) {
         return new StethoToolNoOpImpl(application.getApplicationContext());
     }
+
+    @Singleton
+    public static TimberTool providesTimberTool() {
+        return new TimberToolNoOpImpl();
+    }
 }

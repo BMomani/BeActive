@@ -2,6 +2,7 @@ package com.goodlife.beactive;
 
 import android.app.Application;
 import com.goodlife.beactive.common.tools.stetho.StethoTool;
+import com.goodlife.beactive.common.tools.stetho.TimberTool;
 import com.goodlife.beactive.di.component.ApplicationComponent;
 import com.goodlife.beactive.di.component.DaggerApplicationComponent;
 import com.goodlife.beactive.di.module.ApplicationModule;
@@ -16,6 +17,8 @@ public class BeActiveApplication extends Application {
 
     @Inject
     StethoTool stethoTool;
+    @Inject
+    TimberTool timberTool;
 
     @Override
     public void onCreate() {
@@ -26,7 +29,12 @@ public class BeActiveApplication extends Application {
     }
 
     private void initBeActiveApplication() {
+        initTimber();
         initStetho();
+    }
+
+    private void initTimber() {
+        timberTool.init();
     }
 
     private void initStetho() {

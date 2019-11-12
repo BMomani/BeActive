@@ -36,6 +36,9 @@ dependencies {
     implementation "com.google.dagger:dagger:${daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
 
+    //Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
     //Stetho
     debugImplementation "com.facebook.stetho:stetho:${stethoVersion}"
     debugImplementation "com.facebook.stetho:stetho-okhttp3:${stethoVersion}"
