@@ -1,9 +1,12 @@
 package com.goodlife.beactive;
 
 import android.app.Application;
+import com.goodlife.beactive.common.tools.stetho.StethoTool;
 import com.goodlife.beactive.di.component.ApplicationComponent;
 import com.goodlife.beactive.di.component.DaggerApplicationComponent;
 import com.goodlife.beactive.di.module.ApplicationModule;
+
+import javax.inject.Inject;
 
 /**
  * Created by Basheer Al momani (bmomani@atypon.com) on 11/12/19.
@@ -11,10 +14,23 @@ import com.goodlife.beactive.di.module.ApplicationModule;
 public class BeActiveApplication extends Application {
     private ApplicationComponent mApplicationComponent;
 
+    @Inject
+    StethoTool stethoTool;
+
     @Override
     public void onCreate() {
         getApplicationComponent().inject(this);
         super.onCreate();
+
+        initBeActiveApplication();
+    }
+
+    private void initBeActiveApplication() {
+        initStetho();
+    }
+
+    private void initStetho() {
+        stethoTool.init();
     }
 
     public ApplicationComponent getApplicationComponent() {
